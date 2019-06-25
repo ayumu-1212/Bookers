@@ -1,0 +1,13 @@
+<h2>User info</h2>
+
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+
+<div class="profile-container">
+	<%= attachment_image_tag @user, :profile_image %> <br>
+	<span>name:</span>
+	<%= @user.name %> <br>
+	<span>introduction:</span>
+	<%= @user.introduction %>
+</div>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <section class="header-title">
+        <h2>Bookers</h2>
+      </section>
+      <ul>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to "Home", user_path(current_user.id) %>
+          </li>
+          <li>
+            <%= link_to "Users", users_path %>
+          </li>
+          <li>
+            <%= link_to "Books", books_path %>
+          </li>
+          <li>
+            <%= link_to "logout", destroy_user_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Home", home_path %>
+          </li>
+          <li>
+            <%= link_to "About", home_about_path %>
+          </li>
+          <li>
+            <%= link_to "signup", new_user_registration_path %>
+          </li>
+          <li>
+            <%= link_to "login", new_user_session_path %>
+          </li>
+        <% end %>
+      </ul>
+
+    </header>
+    <%= yield %>
+  </body>
+</html>

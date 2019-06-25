@@ -1,0 +1,19 @@
+<h2>Book detail</h2>
+
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+
+<div class="bookcontainer">
+	<%= attachment_image_tag @book.user, :profile_image %>
+	<%= link_to @book.user.name, user_path(@book.user) %><br>
+
+	<%= @book.title %><br>
+
+	<%= @book.body %><br>
+
+	<%= link_to "Edit", edit_book_path(@book) %>
+
+	<%= link_to "Destroy", book_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %>
+
+</div>
