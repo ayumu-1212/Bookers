@@ -1,14 +1,24 @@
 class UsersController < ApplicationController
 
 	before_action :authenticate_user!
-	before_action :who_are_you, only: [:edit, :update]
+	before_action :who_are_you_user, only: [:edit, :update]
+
+	def who_are_you_user
+		if current_user.id != params[:id].to_i
+			redirect_to books_path
+		end
+	end
 
 	def show
+		@books = Book.where(user_id: params[:id])
+		@book = Book.new
 		@user = User.find(params[:id])
 	end
 
 	def index
 		@users = User.all.order(created: :desc)
+		@user = current_user
+		@book = Book.new
 	end
 
 	def edit

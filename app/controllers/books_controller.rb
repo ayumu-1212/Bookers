@@ -1,7 +1,13 @@
 class BooksController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :who_are_you, only: [:destroy, :edit, :update]
+  before_action :who_are_you_book, only: [:destroy, :edit, :update]
+
+  def who_are_you_book
+    if current_user.id != Book.find(params[:id]).user_id
+      redirect_to books_path
+    end
+  end
 
   def new
     @book = Book.new
@@ -30,10 +36,14 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all.order(created_at: :desc)
+    @book = Book.new
+    @user = User.find(current_user.id)
   end
 
   def show
     @book = Book.find(params[:id])
+    @book_new = Book.new
+    @user = @book.user
   end
 
   def update

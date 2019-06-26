@@ -13,40 +13,69 @@
 
   <body>
     <header>
-      <section class="header-title">
-        <h2>Bookers</h2>
-      </section>
-      <ul>
-        <% if user_signed_in? %>
-          <li>
-            <%= link_to "Home", user_path(current_user.id) %>
-          </li>
-          <li>
-            <%= link_to "Users", users_path %>
-          </li>
-          <li>
-            <%= link_to "Books", books_path %>
-          </li>
-          <li>
-            <%= link_to "logout", destroy_user_session_path, method: :delete %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "Home", home_path %>
-          </li>
-          <li>
-            <%= link_to "About", home_about_path %>
-          </li>
-          <li>
-            <%= link_to "signup", new_user_registration_path %>
-          </li>
-          <li>
-            <%= link_to "login", new_user_session_path %>
-          </li>
-        <% end %>
-      </ul>
-
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+          <div class="col-lg-1"></div>
+          <div class="col-lg-10">
+            <div class="navbar-header">
+              <h4 class="header-title">Bookers</h4>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+              <% if user_signed_in? %>
+                <li>
+                  <%= link_to user_path(current_user.id) do %>
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to users_path do %>
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Users
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to books_path do %>
+                    <span class="glyphicon glyphicon-book" aria-hidden="true"></span> Books
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete do %>
+                    <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> logout
+                  <% end %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to home_path do %>
+                    <span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to home_about_path do %>
+                    <span class="glyphicon glyphicon-link" aria-hidden="true"></span> About
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_registration_path do %>
+                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> sign up
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path do %>
+                    <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> login
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+          <div class="col-lg-1"></div>
+        </div>
+      </nav>
     </header>
-    <%= yield %>
+    <div class="container-fluid">
+      <div class="content">
+        <div class="col-lg-1"></div>
+        <%= yield %>
+        <div class="col-lg-1"></div>
+      </div>
+    </div>
   </body>
 </html>

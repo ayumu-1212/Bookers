@@ -1,4 +1,14 @@
-<h1>Welcome to Bookers!!</h1>
+<div class="col-lg-3"></div>
 
-<%= link_to "sign up", new_user_registration_path %>
-<%= link_to "login", new_user_session_path %>
+<div class="col-lg-4">
+	<h1>Welcome to <span class="glyphicon glyphicon-book" aria-hidden="true"></span><b>Bookers</b>!!</h1>
+	<p>In <span class="glyphicon glyphicon-book" aria-hidden="true"></span><b>Bookers</b>,<br>
+	you can share and exchange your opinions , inpressions , and emotions about varioius books!</p>
+
+	<%= link_to "login", new_user_session_path, class: "btn btn-block btn-info" %>
+	<%= link_to "sign up", new_user_registration_path, class: "btn btn-block btn-success" %>
+
+</div>
+
+
+<div class="col-lg-3"></div>
