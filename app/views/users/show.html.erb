@@ -11,3 +11,7 @@
 	<span>introduction:</span>
 	<%= @user.introduction %>
 </div>
+
+<% if @user == current_user %>
+	<%= link_to "Profile edit", edit_user_path(@user) %>
+<% end %>
