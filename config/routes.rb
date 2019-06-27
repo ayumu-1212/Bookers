@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get "/" => 'home#show', as: "home"
+  get "/" => 'home#show', as: "root"
   get 'home/about'
   devise_for :users
 

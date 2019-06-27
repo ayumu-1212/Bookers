@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
 	def who_are_you_user
 		if current_user.id != params[:id].to_i
-			redirect_to books_path
+			redirect_to user_path(current_user)
 		end
 	end
 
